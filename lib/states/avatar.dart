@@ -9,7 +9,7 @@ Widget gmAvatar(
   BorderRadius? borderRadius,
 }) {
   var placeHolder = Image.asset(
-    'imgs/avatar-default.png',
+    'imgs/avatar_default.png',
     width: width,
     height: height,
   );

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:github_app/l10n/gmlocalizations.dart';
+import 'package:github_app/generated/l10n.dart';
 import 'package:github_app/models/repo.dart';
 import 'package:github_app/states/avatar.dart';
 
@@ -44,7 +44,7 @@ class _RepoItemState extends State<RepoItem>{
                  textScaleFactor: .9,
                ),
                subtitle: subtitle,
-               trailing: Text(widget.repo.language ?? ""),
+               trailing: Text(widget.repo.language),
              ),
              Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0),
              child: Column(
@@ -61,7 +61,7 @@ class _RepoItemState extends State<RepoItem>{
                  Padding(padding: const EdgeInsets.only(top: 8, bottom: 12),
                    child: widget.repo.description == null
                        ? Text(
-                       GmLocalizations.of(context)!.noDescription,
+                       S.current.noDescription,
                    style: TextStyle(
                      fontStyle: FontStyle.italic,
                      color: Colors.grey[700]),
@@ -78,7 +78,7 @@ class _RepoItemState extends State<RepoItem>{
                ],
              ),
              ),
-             _buildBotton();
+             _buildButton()
            ],
          ),
        ),
@@ -86,7 +86,7 @@ class _RepoItemState extends State<RepoItem>{
      );
   }
 
-  Widget _buildBotton(){
+  Widget _buildButton(){
     const paddingWidth = 10;
     return IconTheme(data:
     IconThemeData(
@@ -103,7 +103,7 @@ class _RepoItemState extends State<RepoItem>{
                 Text(" " + widget.repo.stargazersCount.toString().padRight(paddingWidth)),
                 Icon(Icons.info_outline),
                 Text(" " + widget.repo.openIssuesCount.toString().padRight(paddingWidth)),
-                Icon(MyIcons.fork),
+                Icon(Icons.share),
                 Text(widget.repo.forksCount.toString().padRight(paddingWidth)),
               ];
               if(widget.repo.fork){

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:github_app/common/global.dart';
 import 'package:github_app/common/locale_model.dart';
 import 'package:github_app/common/theme_model.dart';
 import 'package:github_app/common/user_model.dart';
-import 'package:github_app/l10n/gmlocalizations.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+
+import 'generated/l10n.dart';
+import 'routes/home_page.dart';
+import 'routes/language_page.dart';
+import 'routes/login_page.dart';
+import 'routes/theme_page.dart';
 
 void main() {
   Global.init().then((value) => runApp(MyApp()));
@@ -28,16 +34,21 @@ class MyApp extends StatelessWidget {
               primarySwatch: themeModel.theme as MaterialColor,
             ),
             onGenerateTitle: (context) {
-              return GmLocalizations.of(context)!.title;
+              return S.current.title;
             },
             home: HomeRoute(),
             // 应用首页
             locale: localModel.getLocale(),
+            localizationsDelegates: [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
             supportedLocales: [
               const Locale('en', 'US'),
               const Locale('zh', 'CN'),
             ],
-            localizationsDelegates: [GmLocalizationsDelegate()],
             localeResolutionCallback:
                 (Locale? _locale, Iterable<Locale> supportedLocales) {
               if (localModel.getLocale() != null) {

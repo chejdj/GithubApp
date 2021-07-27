@@ -1,0 +1,20 @@
+{
+  "title": "Github",
+  "language": "语言",
+  "setting": "设置",
+  "theme": "主题",
+  "auto": "自动",
+  "home": "主页",
+  "login": "登录",
+  "stateManagement": "状态管理",
+  "noDescription": "无描述",
+  "logout": "退出登录",
+  "logoutTips": "退出登录提醒",
+  "cancel": "取消",
+  "yes": "OK",
+  "userName": "用户名称",
+  "userNameOrEmail": "邮箱",
+  "userNameRequired": "用户名称必须",
+  "password": "密码",
+  "passwordRequired": "密码必须"
+}
