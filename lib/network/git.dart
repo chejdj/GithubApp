@@ -23,7 +23,7 @@ class Git{
   ));
   
   static void init(){
-    dio.interceptors.add(Global.netCache);
+    dio.interceptors.addAll([Global.netCache, LoggingInterceptor()]);
     dio.options.headers[HttpHeaders.authorizationHeader] = Global.profile.token;
     // if(!Global.isRelease){
     //   (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -34,7 +34,6 @@ class Git{
     //     client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
     //   };
     // }
-    dio.interceptors.add(LoggingInterceptor());
   }
 
   Future<User> login(String userName, String pwd) async{
@@ -75,7 +74,7 @@ class LoggingInterceptor extends Interceptor{
     debugPrint("--> ${options.method} ${options.path}");
     debugPrint("Content type: ${options.contentType}");
     debugPrint("<-- END HTTP");
-    return super.onRequest(options, handler);
+    handler.next(options);
   }
 
   @override
@@ -98,7 +97,7 @@ class LoggingInterceptor extends Interceptor{
       debugPrint(response.data);
     }
     debugPrint("<-- END HTTP");
-    return super.onResponse(response, handler);
+    handler.next(response);
   }
 
   @override
@@ -106,6 +105,6 @@ class LoggingInterceptor extends Interceptor{
       debugPrint("<-- Error -->");
       debugPrint(err.error);
       debugPrint(err.message);
-      return super.onError(err, handler);
+      handler.next(err);
   }
 }
