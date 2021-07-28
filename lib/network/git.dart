@@ -16,7 +16,7 @@ class Git{
       followRedirects: false, maxRedirects: null, requestEncoder: null, responseDecoder: null,listFormat: null);
   
   static Dio dio = new Dio(BaseOptions(
-    baseUrl: 'https://api/github.com/',
+    baseUrl: 'https://api.github.com/',
     headers: {
       HttpHeaders.acceptHeader: "application/vnd.github.squirrel-girl=preview, application/vnd.github.symmetra-preview+json",
     },

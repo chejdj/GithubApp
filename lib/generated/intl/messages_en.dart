@@ -20,5 +20,28 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "auto": MessageLookupByLibrary.simpleMessage("auto"),
+        "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
+        "home": MessageLookupByLibrary.simpleMessage("home"),
+        "language": MessageLookupByLibrary.simpleMessage("language"),
+        "login": MessageLookupByLibrary.simpleMessage("login"),
+        "logout": MessageLookupByLibrary.simpleMessage("logout"),
+        "logoutTips": MessageLookupByLibrary.simpleMessage("logout tips"),
+        "noDescription": MessageLookupByLibrary.simpleMessage("no description"),
+        "password": MessageLookupByLibrary.simpleMessage("password"),
+        "passwordRequired":
+            MessageLookupByLibrary.simpleMessage("required password"),
+        "setting": MessageLookupByLibrary.simpleMessage("setting"),
+        "stateManagement":
+            MessageLookupByLibrary.simpleMessage("stateManagement"),
+        "theme": MessageLookupByLibrary.simpleMessage("theme"),
+        "title": MessageLookupByLibrary.simpleMessage("Github"),
+        "userName": MessageLookupByLibrary.simpleMessage("user name"),
+        "userNameOrEmail":
+            MessageLookupByLibrary.simpleMessage("user name or email"),
+        "userNameRequired":
+            MessageLookupByLibrary.simpleMessage("required user name"),
+        "yes": MessageLookupByLibrary.simpleMessage("OK")
+      };
 }

@@ -49,6 +49,186 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Github`
+  String get title {
+    return Intl.message(
+      'Github',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `language`
+  String get language {
+    return Intl.message(
+      'language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `setting`
+  String get setting {
+    return Intl.message(
+      'setting',
+      name: 'setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `theme`
+  String get theme {
+    return Intl.message(
+      'theme',
+      name: 'theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `auto`
+  String get auto {
+    return Intl.message(
+      'auto',
+      name: 'auto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `home`
+  String get home {
+    return Intl.message(
+      'home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `login`
+  String get login {
+    return Intl.message(
+      'login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `stateManagement`
+  String get stateManagement {
+    return Intl.message(
+      'stateManagement',
+      name: 'stateManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `no description`
+  String get noDescription {
+    return Intl.message(
+      'no description',
+      name: 'noDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `logout`
+  String get logout {
+    return Intl.message(
+      'logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `logout tips`
+  String get logoutTips {
+    return Intl.message(
+      'logout tips',
+      name: 'logoutTips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `cancel`
+  String get cancel {
+    return Intl.message(
+      'cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get yes {
+    return Intl.message(
+      'OK',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `user name`
+  String get userName {
+    return Intl.message(
+      'user name',
+      name: 'userName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `user name or email`
+  String get userNameOrEmail {
+    return Intl.message(
+      'user name or email',
+      name: 'userNameOrEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `required user name`
+  String get userNameRequired {
+    return Intl.message(
+      'required user name',
+      name: 'userNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password`
+  String get password {
+    return Intl.message(
+      'password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `required password`
+  String get passwordRequired {
+    return Intl.message(
+      'required password',
+      name: 'passwordRequired',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
