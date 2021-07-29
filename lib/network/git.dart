@@ -18,10 +18,12 @@ class Git{
   static Dio dio = new Dio(BaseOptions(
     baseUrl: 'https://api.github.com/',
     headers: {
-      HttpHeaders.acceptHeader: "application/vnd.github.squirrel-girl=preview, application/vnd.github.symmetra-preview+json",
+      HttpHeaders.acceptHeader: "application/vnd.github.squirrel-girl-preview, application/vnd.github.symmetra-preview+json"
     },
   ));
-  
+
+  // application/vnd.github.v3+json
+
   static void init(){
     dio.interceptors.addAll([Global.netCache, LoggingInterceptor()]);
     dio.options.headers[HttpHeaders.authorizationHeader] = Global.profile.token;
@@ -39,9 +41,9 @@ class Git{
   Future<User> login(String userName, String pwd) async{
      String basic = 'Basic' + base64.encode(utf8.encode('$login:$pwd'));
      var r = await dio.get(
-       "/users/$userName",
+       "users/$userName",
        options: _options.copyWith(headers: {
-         HttpHeaders.authorizationHeader: basic
+         HttpHeaders.authorizationHeader: basic,
        },extra:{
          "noCache": true,
        }),
@@ -57,7 +59,7 @@ class Git{
         _options.extra?.addAll({"refresh": true, "list": true});
      }
      var r = await dio.get<List>(
-       "user/repos",
+       "users/${Global.profile.user!.name}/repos",
          queryParameters: queryParameters,
          options:_options,
      );

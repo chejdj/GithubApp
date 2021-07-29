@@ -35,16 +35,16 @@ class _RepoItemState extends State<RepoItem>{
              ListTile(
                dense: true,
                leading: gmAvatar(
-                 widget.repo.owner.avatarUrl!,
+                 widget.repo.owner.avatarUrl ?? '',
                  width: 24.0,
                  borderRadius: BorderRadius.circular(12),
                ),
                title: Text(
-                 widget.repo.owner.login!,
+                 widget.repo.owner.login ?? '',
                  textScaleFactor: .9,
                ),
                subtitle: subtitle,
-               trailing: Text(widget.repo.language),
+               trailing: Text(widget.repo.language ?? ''),
              ),
              Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0),
              child: Column(
@@ -66,7 +66,7 @@ class _RepoItemState extends State<RepoItem>{
                      fontStyle: FontStyle.italic,
                      color: Colors.grey[700]),
                    ): Text(
-                     widget.repo.description,
+                     widget.repo.description ?? '',
                      maxLines: 3,
                      style: TextStyle(
                      height: 1.15,

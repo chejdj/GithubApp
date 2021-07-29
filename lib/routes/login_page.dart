@@ -96,13 +96,10 @@ class _LoginRouteState extends State<LoginRoute> {
       User? user;
       try {
         user = await Git(context).login(_nameController.text, _pwdController.text);
-        Provider.of<UserModel>(context, listen: false).user = user;
+        Provider.of<UserModel>(context, listen: false).currentUser = user;
       } catch (e) {
         print('userLogin failed ${e.toString()}');
       } finally {
-        Navigator.of(context).pop();
-      }
-      if (user != null) {
         Navigator.of(context).pop();
       }
     }

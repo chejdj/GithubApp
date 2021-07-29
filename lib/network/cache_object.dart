@@ -33,7 +33,7 @@ class NetCache extends Interceptor{
            delete(options.uri.toString());
          }
          handler.next(options);
-         return ;
+         return;
      }
      if(options.extra['noCache'] != true &&
          options.method.toLowerCase() == 'get'){
@@ -47,11 +47,12 @@ class NetCache extends Interceptor{
           }
         }
      }
+     handler.next(options);
   }
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    // 错误状态不缓存
+    super.onError(err, handler);
   }
 
   @override
@@ -59,6 +60,7 @@ class NetCache extends Interceptor{
       if(Global.profile.cache!.enable){
         _saveCache(response);
       }
+      super.onResponse(response, handler);
   }
   _saveCache(Response ob){
      RequestOptions options = ob.requestOptions;

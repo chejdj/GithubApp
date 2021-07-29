@@ -11,7 +11,6 @@ class Repo {
     required this.name,
     required this.fullName,
     required this.owner,
-    required this.parent,
     required this.private,
     required this.description,
     required this.fork,
@@ -24,7 +23,6 @@ class Repo {
     required this.pushedAt,
     required this.createdAt,
     required this.updatedAt,
-    required this.subscribersCount,
     required this.license,
   });
 
@@ -32,11 +30,10 @@ class Repo {
   final String name;
   final String fullName;
   final User owner;
-  final Repo parent;
   final bool private;
   final String description;
   final bool fork;
-  final String language;
+  final String? language;
   final int forksCount;
   final int stargazersCount;
   final int size;
@@ -45,15 +42,13 @@ class Repo {
   final String pushedAt;
   final String createdAt;
   final String updatedAt;
-  final int subscribersCount;
-  final License license;
+  final License? license;
 
   factory Repo.fromJson(Map<String,dynamic> json) => Repo(
     id: json['id'] as int,
     name: json['name'] as String,
     fullName: json['full_name'] as String,
     owner: User.fromJson(json['owner'] as Map<String, dynamic>),
-    parent: Repo.fromJson(json['parent'] as Map<String, dynamic>),
     private: json['private'] as bool,
     description: json['description'] as String,
     fork: json['fork'] as bool,
@@ -66,8 +61,7 @@ class Repo {
     pushedAt: json['pushed_at'] as String,
     createdAt: json['created_at'] as String,
     updatedAt: json['updated_at'] as String,
-    subscribersCount: json['subscribers_count'] as int,
-    license: License.fromJson(json['license'] as Map<String, dynamic>)
+    license: json['license'] != null ? License.fromJson(json['license'] as Map<String, dynamic>) : null
   );
   
   Map<String, dynamic> toJson() => {
@@ -75,7 +69,6 @@ class Repo {
     'name': name,
     'full_name': fullName,
     'owner': owner.toJson(),
-    'parent': parent.toJson(),
     'private': private,
     'description': description,
     'fork': fork,
@@ -88,8 +81,7 @@ class Repo {
     'pushed_at': pushedAt,
     'created_at': createdAt,
     'updated_at': updatedAt,
-    'subscribers_count': subscribersCount,
-    'license': license.toJson()
+    'license': license!=null ? license!.toJson():''
   };
 
   Repo clone() => Repo(
@@ -97,7 +89,6 @@ class Repo {
     name: name,
     fullName: fullName,
     owner: owner.clone(),
-    parent: parent.clone(),
     private: private,
     description: description,
     fork: fork,
@@ -110,8 +101,7 @@ class Repo {
     pushedAt: pushedAt,
     createdAt: createdAt,
     updatedAt: updatedAt,
-    subscribersCount: subscribersCount,
-    license: license.clone()
+    license: license?.clone()
   );
 
 
@@ -120,7 +110,6 @@ class Repo {
     String? name,
     String? fullName,
     User? owner,
-    Repo? parent,
     bool? private,
     String? description,
     bool? fork,
@@ -133,14 +122,12 @@ class Repo {
     String? pushedAt,
     String? createdAt,
     String? updatedAt,
-    int? subscribersCount,
     License? license
   }) => Repo(
     id: id ?? this.id,
     name: name ?? this.name,
     fullName: fullName ?? this.fullName,
     owner: owner ?? this.owner,
-    parent: parent ?? this.parent,
     private: private ?? this.private,
     description: description ?? this.description,
     fork: fork ?? this.fork,
@@ -153,16 +140,15 @@ class Repo {
     pushedAt: pushedAt ?? this.pushedAt,
     createdAt: createdAt ?? this.createdAt,
     updatedAt: updatedAt ?? this.updatedAt,
-    subscribersCount: subscribersCount ?? this.subscribersCount,
     license: license ?? this.license,
   );
 
   @override
   bool operator ==(Object other) => identical(this, other)
-    || other is Repo && id == other.id && name == other.name && fullName == other.fullName && owner == other.owner && parent == other.parent && private == other.private && description == other.description && fork == other.fork && language == other.language && forksCount == other.forksCount && stargazersCount == other.stargazersCount && size == other.size && defaultBranch == other.defaultBranch && openIssuesCount == other.openIssuesCount && pushedAt == other.pushedAt && createdAt == other.createdAt && updatedAt == other.updatedAt && subscribersCount == other.subscribersCount && license == other.license;
+    || other is Repo && id == other.id && name == other.name && fullName == other.fullName && owner == other.owner && private == other.private && description == other.description && fork == other.fork && language == other.language && forksCount == other.forksCount && stargazersCount == other.stargazersCount && size == other.size && defaultBranch == other.defaultBranch && openIssuesCount == other.openIssuesCount && pushedAt == other.pushedAt && createdAt == other.createdAt && updatedAt == other.updatedAt  && license == other.license;
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ fullName.hashCode ^ owner.hashCode ^ parent.hashCode ^ private.hashCode ^ description.hashCode ^ fork.hashCode ^ language.hashCode ^ forksCount.hashCode ^ stargazersCount.hashCode ^ size.hashCode ^ defaultBranch.hashCode ^ openIssuesCount.hashCode ^ pushedAt.hashCode ^ createdAt.hashCode ^ updatedAt.hashCode ^ subscribersCount.hashCode ^ license.hashCode;
+  int get hashCode => id.hashCode ^ name.hashCode ^ fullName.hashCode ^ owner.hashCode ^ private.hashCode ^ description.hashCode ^ fork.hashCode ^ language.hashCode ^ forksCount.hashCode ^ stargazersCount.hashCode ^ size.hashCode ^ defaultBranch.hashCode ^ openIssuesCount.hashCode ^ pushedAt.hashCode ^ createdAt.hashCode ^ updatedAt.hashCode ^ license.hashCode;
 }
 
 @immutable
