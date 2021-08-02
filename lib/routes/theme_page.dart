@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_logan/flutter_logan.dart';
 import 'package:github_app/common/global.dart';
 import 'package:github_app/common/theme_model.dart';
 import 'package:github_app/generated/l10n.dart';
@@ -24,6 +25,7 @@ class ThemeChangeRoute extends StatelessWidget {
             ),
             onTap: () {
               Provider.of<ThemeModel>(context).theme = e;
+              FlutterLogan.log(Global.LOG_FLAG, 'change theme');
             },
           );
         }).toList(),

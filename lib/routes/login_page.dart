@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_logan/flutter_logan.dart';
 import 'package:github_app/common/global.dart';
 import 'package:github_app/common/user_model.dart';
 import 'package:github_app/generated/l10n.dart';
@@ -92,13 +93,14 @@ class _LoginRouteState extends State<LoginRoute> {
 
   void _onLogin() async {
     if ((_formKey.currentState as FormState).validate()) {
+      FlutterLogan.log(Global.LOG_FLAG, 'start Login');
       // showLoading(context);
       User? user;
       try {
         user = await Git(context).login(_nameController.text, _pwdController.text);
         Provider.of<UserModel>(context, listen: false).currentUser = user;
       } catch (e) {
-        print('userLogin failed ${e.toString()}');
+        FlutterLogan.log(Global.LOG_FLAG, 'userLogin failed ${e.toString()}');
       } finally {
         Navigator.of(context).pop();
       }

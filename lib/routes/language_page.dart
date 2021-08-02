@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_logan/flutter_logan.dart';
 import 'package:github_app/common/locale_model.dart';
 import 'package:github_app/generated/l10n.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class LanguageRoute extends StatelessWidget{
          trailing:
          localModel.getLocale() == value ? Icon(Icons.done, color: color) : null,
          onTap: (){
+           FlutterLogan.log(1, 'change local: $value');
            localModel.locale = value;
        },
        );
