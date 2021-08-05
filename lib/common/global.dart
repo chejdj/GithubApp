@@ -2,11 +2,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_logan/flutter_logan.dart';
 import 'package:github_app/models/cacheConfig.dart';
 import 'package:github_app/models/profile.dart';
 import 'package:github_app/network/cache_object.dart';
 import 'package:github_app/network/git.dart';
+import 'package:lingoace_component_log/llog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _themes = <MaterialColor>[
@@ -47,7 +47,7 @@ class Global{
      Git.init();
      
      //初始化日志框架
-     FlutterLogan.init('1234', '123', 1024*1024*10);
+     LLog.init('1234', '123', 1024*1024*10);
    }
 
    static saveProfile() => _prefs?.setString("profile", jsonEncode(profile.toJson()));

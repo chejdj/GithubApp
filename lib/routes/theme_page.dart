@@ -4,6 +4,7 @@ import 'package:flutter_logan/flutter_logan.dart';
 import 'package:github_app/common/global.dart';
 import 'package:github_app/common/theme_model.dart';
 import 'package:github_app/generated/l10n.dart';
+import 'package:lingoace_component_log/llog.dart';
 import 'package:provider/provider.dart';
 
 class ThemeChangeRoute extends StatelessWidget {
@@ -25,7 +26,7 @@ class ThemeChangeRoute extends StatelessWidget {
             ),
             onTap: () {
               Provider.of<ThemeModel>(context).theme = e;
-              FlutterLogan.log(Global.LOG_FLAG, 'change theme');
+              LLog.i('change theme');
             },
           );
         }).toList(),

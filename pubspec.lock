@@ -145,7 +145,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_logan:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_logan
       url: "https://pub.flutter-io.cn"
@@ -196,6 +196,15 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.3"
+  lingoace_component_log:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: f890cf6a04c8bcf1983757803751e7d834d20845
+      url: "git@github.com:pplingo-client/LingoAce-Component-Log.git"
+    source: git
+    version: "0.0.1"
   matcher:
     dependency: transitive
     description:

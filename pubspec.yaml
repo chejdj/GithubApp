@@ -32,7 +32,8 @@ dependencies:
   intl: ^0.17.0
   flukit: ^1.0.2
   cached_network_image: ^2.5.1
-  flutter_logan: ^1.0.2
+  lingoace_component_log:
+    git: git@github.com:pplingo-client/LingoAce-Component-Log.git
 
 
 
